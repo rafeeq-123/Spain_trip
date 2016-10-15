@@ -1,0 +1,9 @@
+<h1>Edit Your Conversion</h1>
+<%= form_for @rate do |f| %>
+  <%=f.label :item%>
+  <%= f.text_field :item%>
+  <%=f.label :dollar%>
+  <%= f.number_field :dollar %>
+  <%= f.submit "Get New Conversion"%>
+    <%=link_to "Cancel", root_path%>
+  <%end%>

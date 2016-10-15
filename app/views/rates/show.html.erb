@@ -1,8 +1,7 @@
 <h1>Conversions</h1>
 <%Rate.all.each do |rate|%>
-<
-<h3> Item:<%=rate.item%>, in Euros is <%=rate.dollar.to_i * 1.09714 %></h3>
-
-
-<h3></h3>
+<p> Item: <%=rate.item%>, in Euros Your item is <%=rate.dollar.to_i * 1.09714 %></p>
+ <%=link_to "Edit", edit_rate_path(@rate)%>
+  <%=link_to "Delete", rate_path(@rate), method: :delete%>
+    <%=link_to "Cancel", root_path%>
 <%end%>

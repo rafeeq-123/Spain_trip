@@ -1,5 +1,5 @@
 class RatesController < ApplicationController
-  before_action :find_params, only: [:show, :edit, :update]
+  before_action :rate_find_params, only: [:show, :edit, :update]
   def index
     @rates = Rate.all
   end
@@ -13,20 +13,29 @@ class RatesController < ApplicationController
 
   def create
     @rate = Rate.new(rate_params)
-    @rate.save
-    redirect_to @rate
+   if @rate.save
+      redirect_to @rate
+   else
+      render 'new'
+    end
   end
 
   def edit
   end
 
   def update
+    if @rate.update(rate_params)
+       @rate.save
+       redirect_to @rate
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-    find_params
+    rate_find_params
     @rate.destroy
-    redirect_to 'index'
+    redirect_to root_path
   end
 
   private
@@ -35,7 +44,7 @@ class RatesController < ApplicationController
       params.require(:rate).permit(:item, :dollar)
    end
 
-   def find_params
+   def rate_find_params
       @rate = Rate.find(params[:id])
    end
 end
