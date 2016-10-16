@@ -3,7 +3,12 @@
 <%= form_for @rate do |f| %>
   <%=f.label :item%>
   <%= f.text_field :item%>
-  <%=f.label :dollar%>
-  <%= f.number_field :dollar %>
+  <%=f.label :dollar %>
+  <%=f.text_field :dollar%>
+  <%= f.label :currency_type%>
+<select>
+  <option value="euro">euro</option>
+  <option value="pound">Pound</option>
+</select>
   <%= f.submit "Get Conversion"%>
   <%end%>
